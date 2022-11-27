@@ -157,6 +157,45 @@
     errorBtns[14].addEventListener("click", ()=>{
       aintGonnaWork();
     })
+
+    //////////////////////try catch/////////////////////////////////////////
+    function aintGonnaWork(input){
+      if (input != "maybe this will work"){
+        throw new Error("this aint work");
+      }
+    }
+    try{
+      aintGonnaWork("this wont work");
+    }catch(e){
+      console.error(e.name); 
+      console.error(e.message); 
+      console.error(e.stack); 
+    }finally{
+      console.log("reach finally block")
+    }
+    ///////////////////custom error/////////////////////////////////////////
+    class HAHAError extends Error {
+    constructor(message) {
+      super(message); // (1)
+      this.name = "HAHAError"; // (2)
+      }
+    }
+
+    function errorFun(input){
+      if (input != -1){
+        throw new HAHAError("hahahahaha jajajajajaja axaxaxaxaxax");
+        
+      }
+    }
+    try {
+      errorFun(1);
+    } catch(e) {
+      console.error(e.name); 
+      console.error(e.message); 
+      console.error(e.stack); 
+    }finally{
+      console.log("reach finally block")
+    }
   </script>
 </body>
 
